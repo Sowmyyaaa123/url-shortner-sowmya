@@ -36,14 +36,16 @@ export default function LoginPage() {
       const data = response.data;
 
       dispatch(
-        setUser({
-          name: data.name,
-          avatar: data.avatar,
-          token: data.token,
-          email: data.email,
-          isLoggedIn: true,
-        })
-      );
+  setUser({
+    name: data.name,
+    avatar: data.avatar,
+    token: data.token,
+    email: data.email,
+    isLoggedIn: true,
+  })
+);
+
+localStorage.setItem("token", data.token);
       showNotification({
         title: "Success",
         message: "Welcome! Login Successfully.",
