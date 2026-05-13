@@ -1,78 +1,50 @@
+import { Button, TextInput } from '@mantine/core'
 import React, { useState } from 'react'
+import Service from '../../utils/http.js'
 
-import {
-  Button,
-  Container,
-  Paper,
-  Text,
-  TextInput,
-  Title,
-  Stack,
-} from '@mantine/core'
 
-import { IconLink } from '@tabler/icons-react'
+export default function Input({setResponse}) {
+   const service = new Service();
+   const [payload, setPayload] = useState(
+       {
+           "originalUrl": "",
+           "expiresAt": "",
+           "title": "",
+           "customUrl": ""
+       }
+   )
 
-export default function Input({ setResponse }) {
-  const [url, setUrl] = useState('')
 
-  const handleSubmit = () => {
+   const generateShortCode = async ()=>{
+       const response = await service.post("s",payload)
+       setResponse(response)
+   }
+   // POST
+   // https://url-shortener-bootcamp.onrender.com/api/s
+  
+   // GET
+   // https://url-shortener-bootcamp.onrender.com/api/s/Z_0HvF2
+   return (
+       <div>
 
-    const dummyResponse = {
-      shortCode: 'abc123',
-    }
 
-    setResponse(dummyResponse)
-  }
-
-  return (
-    <Container size={500} mt={60}>
-      <Paper
-        radius="xl"
-        shadow="xl"
-        p={40}
-        withBorder
-        style={{
-          background: '#ffffff',
-        }}
-      >
-        <Stack>
-
-          <Title
-            order={1}
-            ta="center"
-            fw={800}
-          >
-            URL Shortener
-          </Title>
-
-          <Text
-            ta="center"
-            c="dimmed"
-            size="md"
-          >
-            Convert long URLs into short, shareable links instantly.
-          </Text>
-
-          <TextInput
-            size="lg"
-            radius="md"
-            placeholder="Paste your long URL here..."
-            value={url}
-            leftSection={<IconLink size={18} />}
-            onChange={(e) => setUrl(e.target.value)}
-          />
-
-          <Button
-            size="lg"
-            radius="md"
-            fullWidth
-            onClick={handleSubmit}
-          >
-            Generate Short URL
-          </Button>
-
-        </Stack>
-      </Paper>
-    </Container>
-  )
+           <TextInput
+               label="Input label"
+               withAsterisk
+               description="Input description"
+               placeholder="Input placeholder"
+               onChange={(e) => {
+                   // console.log(e.target.value)
+                   setPayload( { ...payload ,originalUrl:e.target.value } )
+               }}
+           />
+           <Button disabled={ payload.originalUrl == "" } onClick={(e) => {
+               generateShortCode()
+           }} variant="filled" color="green">Shorten Url</Button>
+       </div>
+   )
 }
+
+
+
+

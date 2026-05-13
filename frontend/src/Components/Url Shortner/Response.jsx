@@ -1,6 +1,7 @@
 import React from 'react'
-import { QRCodeCanvas } from 'qrcode.react'
+
 import { Paper, Text, Button } from '@mantine/core'
+import QRCode from "react-qr-code";
 
 export default function Response({ response }) {
 
@@ -38,9 +39,9 @@ export default function Response({ response }) {
       </a>
 
       <div style={{ marginTop: '30px' }}>
-        <QRCodeCanvas
+         <QRCode
           value={shortUrl}
-          size={220}
+          size={200}
         />
       </div>
 

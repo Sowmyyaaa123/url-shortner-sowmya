@@ -7,7 +7,7 @@ export default function Profile() {
     name: "Mente Sowmya Lakshmi",
     email: "mentesowmya7@gmail.com",
     id: "2310040060",
-    avatar: "https://avatars.githubusercontent.com/u/1234567890?v=4",
+    avatar: "cute",
   }
 
   return (
