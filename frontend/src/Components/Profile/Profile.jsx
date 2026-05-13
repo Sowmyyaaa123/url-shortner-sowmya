@@ -1,5 +1,7 @@
 import React from 'react'
 import { Avatar, Container } from '@mantine/core'
+import profilepic from '../../assets/profile.jpg' // change path if needed
+
 
 export default function Profile() {
 
@@ -7,7 +9,7 @@ export default function Profile() {
     name: "Mente Sowmya Lakshmi",
     email: "mentesowmya7@gmail.com",
     id: "2310040060",
-    avatar: "cute",
+    avatar: "/profile.jpg",
   }
 
   return (
