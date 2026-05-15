@@ -6,8 +6,7 @@ import QRCode from "react-qr-code";
 export default function Response({ response }) {
 
   const shortUrl =
-    "https://url-shortener-bootcamp.onrender.com/api/s/" +
-    response.shortCode
+    "import.meta.env.VITE_DEV_PROXY+ api/s/" + response.shortCode
 
   return (
     <Paper

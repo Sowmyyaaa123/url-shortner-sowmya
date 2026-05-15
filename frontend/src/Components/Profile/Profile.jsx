@@ -1,42 +1,50 @@
-import React from 'react'
-import { Avatar, Container } from '@mantine/core'
-import profilepic from '../../assets/profile.jpg' // change path if needed
-
+import { Avatar, Paper, Stack, Text, Title } from "@mantine/core";
+import React from "react";
 
 export default function Profile() {
-
   const dummy = {
     name: "Mente Sowmya Lakshmi",
-    email: "mentesowmya7@gmail.com",
+    email: "2310040060@klh.edu.in",
     id: "2310040060",
-    avatar: "/profile.jpg",
-  }
+    avatar: "https://avatars.githubusercontent.com/u/1234567890?v=4",
+  };
 
   return (
-    <
-      Container
+    <div
       style={{
-        height: "50vh",
-        display: "grid",
-        placeItems: "center",
-        textAlign: "center",
+        minHeight: "80vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <div>
-        <Avatar
-          src={dummy.avatar}
-          size={140}
-          mx="auto"
-        />
+      <Paper
+        shadow="md"
+        p="xl"
+        radius="md"
+        withBorder
+        style={{
+          width: "350px",
+          textAlign: "center",
+        }}
+      >
+        <Stack align="center">
+          <Avatar src={dummy.avatar} size={120} radius="50%" />
 
-        <h2 style={{ color: "blue" }}>
-          {dummy.name}
-        </h2>
+          <Title
+            order={2}
+            style={{
+              color: "blue",
+            }}
+          >
+            {dummy.name}
+          </Title>
 
-        <p>{dummy.email}</p>
+          <Text size="md">{dummy.email}</Text>
 
-        <p>ID: {dummy.id}</p>
-      </div>
-    </Container>
-  )
+          <Text fw={500}>ID: {dummy.id}</Text>
+        </Stack>
+      </Paper>
+    </div>
+  );
 }
