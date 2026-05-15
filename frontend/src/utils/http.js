@@ -1,12 +1,13 @@
 import axios from "axios";
 
 function joinURL(baseURL, url) {
-    return `${baseURL}/${url}`;
+  return `${baseURL}/${url}`;
 }
 
 class Service {
   constructor() {
     this.domain = "";
+
     if (import.meta.env.VITE_BZENV === "development") {
       this.domain = import.meta.env.VITE_DEV_PROXY;
     }
@@ -24,41 +25,40 @@ class Service {
         "Content-Type": "application/json",
       },
     });
+
     return res.data;
   }
 
   post(url, data) {
-    const method = "POST";
-    return this.request(url, method, data);
+    return this.request(url, "POST", data);
   }
 
   get(url) {
-    const method = "GET";
-    return this.request(url, method);
+    return this.request(url, "GET");
   }
 
   delete(url, data) {
-    const method = "DELETE";
-    return this.request(url, method, data);
+    return this.request(url, "DELETE", data);
   }
 
   put(url, data) {
-    const method = "PUT";
-    return this.request(url, method, data);
+    return this.request(url, "PUT", data);
   }
 
   patch(url, data) {
-    const method = "PATCH";
-    return this.request(url, method, data);
+    return this.request(url, "PATCH", data);
   }
-
 
   getBaseURL = () => {
     if (import.meta.env.VITE_BZENV === "development") {
-      return import.meta.env.VITE_DEV_PROXY || "http://localhost:3000"; // fallback proxy
+      return (
+        import.meta.env.VITE_DEV_PROXY ||
+        "http://localhost:3000"
+      );
     }
+
     return window.location.origin;
   };
 }
 
-export default Service
+export default Service;
